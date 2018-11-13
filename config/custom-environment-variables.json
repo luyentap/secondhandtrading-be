@@ -1,0 +1,7 @@
+{
+    "jwtPrivateKey": "bacon_jwtPrivateKey",
+    "googleClientId": "bacon_googleClientId",
+    "googleClientSecret": "bacon_googleClientSecret",
+    "facebookClientId": "bacon_facebookClientId",
+    "facebookClientSecret": "bacon_facebookClientSecret"
+}

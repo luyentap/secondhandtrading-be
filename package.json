@@ -1,0 +1,31 @@
+{
+  "name": "bacon-rater-app-back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/codeengine-interns/bacon-rater-app-back-end.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/codeengine-interns/bacon-rater-app-back-end/issues"
+  },
+  "homepage": "https://gitlab.com/codeengine-interns/bacon-rater-app-back-end#README",
+  "dependencies": {
+    "bcrypt": "^3.0.2",
+    "config": "^2.0.1",
+    "express": "^4.16.4",
+    "joi": "^14.0.4",
+    "jsonwebtoken": "^8.3.0",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.3.9",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth20": "^1.0.0"
+  }
+}
