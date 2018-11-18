@@ -19,29 +19,15 @@ var auth = {
 
         res.header('x-auth-token', token).send('Login successfully!');
     },
-<<<<<<< HEAD
-    googleOAuth: async (req, res) => {
-        const token = req.user.generateAuthToken();
-        console.log(token);
-        res.status(200).send(token);
-    },
-    googleCallback: (req, res) => {
-        res.redirect('/');
-    },
-    facebookAuth: async (req, res) => {
-        const token = User.generateAuthToken();
-        res.status(200).send(token);
-=======
     googleCallback: (req, res) => {
         const token = req.user.generateAuthToken();
-        console.log("token: "+ token);
-        res.header('x-auth-token', token).status(200).redirect("/");
->>>>>>> 35e21c745e7a29696eb75dc251443b9f05ce748a
+        // console.log("user: "+ req.user);
+        res.send(req.user).header('x-auth-token', token);
     },
     facebookCallback: (req, res) => {
         const token = req.user.generateAuthToken();
         console.log("token: "+ token);
-        res.header('x-auth-token', token).status(200).redirect("/");
+        res.header('x-auth-token', token).send(req.user);
     }
 };
 
