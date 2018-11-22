@@ -20,9 +20,10 @@ var auth = {
         res.header('x-auth-token', token).send('Login successfully!');
     },
     googleCallback: (req, res) => {
-        const token = req.user.generateAuthToken();
+        const user = req.user;
+        const token = user.generateAuthToken();
         // console.log("user: "+ req.user);
-        res.send(req.user).header('x-auth-token', token);
+        res.send({user, token});
     },
     facebookCallback: (req, res) => {
         const token = req.user.generateAuthToken();
