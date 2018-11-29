@@ -39,6 +39,12 @@ var users = {
         if(user.method == 'google') res.send({name: user.google.name});
         if(user.method == 'facebook') res.send({name: user.facebook.name});
         if(user.method == 'local') res.send({name: user.local.name});
+    },
+    getInfo: async (req, res) => {
+        const user = await User.findById(req.params.id);
+        if(!user) return res.status(404).send('This user with given ID was not found.');
+    
+        res.send(user);
     }
 };
 
