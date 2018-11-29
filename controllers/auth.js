@@ -24,7 +24,11 @@ var auth = {
         const token = user.generateAuthToken();
         // console.log("token: "+ token);
         // res.send({user, token});
-        res.redirect('/login?token='+ token);
+        // res.redirect('/login?token='+ token);
+        res.writeHead(301, {
+            location: "https://localhost:3000/" + "success_login?token=" + token
+        });
+        res.end();
     },
     facebookCallback: (req, res) => {
         const token = req.user.generateAuthToken();

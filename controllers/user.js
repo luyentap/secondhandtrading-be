@@ -41,7 +41,7 @@ var users = {
         if(user.method == 'local') res.send({name: user.local.name});
     },
     getInfo: async (req, res) => {
-        const user = await User.findById(req.params.id);
+        const user = await User.findById(req.user._id);
         if(!user) return res.status(404).send('This user with given ID was not found.');
     
         res.send(user);
