@@ -22,8 +22,9 @@ var auth = {
     googleCallback: (req, res) => {
         const user = req.user;
         const token = user.generateAuthToken();
-        // console.log("user: "+ req.user);
-        res.send({user, token});
+        // console.log("token: "+ token);
+        // res.send({user, token});
+        res.redirect('/login?token='+ token);
     },
     facebookCallback: (req, res) => {
         const token = req.user.generateAuthToken();
