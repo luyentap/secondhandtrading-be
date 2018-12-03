@@ -16,6 +16,12 @@ mongoose.connect('mongodb://localhost/bacon-rater-app')
     .then(()=>{console.log('Connected to MongoDB...')})
     .catch(error=>{console.error('Could not connect to MongoDB.')})
 
+app.all('/', function (req, res, next){
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Request-With");
+    next();
+});
+
 app.use(express.json());
 app.use(passport.initialize());
 app.use('/api/users', users);
