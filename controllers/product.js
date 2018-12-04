@@ -1,4 +1,5 @@
 const { Product, validateProduct } = require('../models/product');
+const {User} = require('../models/user');
 
 var products = {
     getAll: async (req, res) => {
@@ -11,12 +12,21 @@ var products = {
             res.status(400).send(error.details[0].message);
         }
 
-        const {name, price, img_link, status} = req.body;
+        const {type, price, img_link, status, comment, userId} = req.body;
+
+        const user = await User.findById(userId);
+        if(!user) return res.send('This user with given ID was not found');
+
         let product = new Product({
-            name: name,
+            type: type,
             price: price,
             img_link: img_link,
-            status: status
+            status: status,
+            user: {
+                method: user.method,
+                name: user.name,
+                email: user.email
+            }
         });
         product = await product.save();
 
@@ -26,11 +36,20 @@ var products = {
         const { error } = validateProduct(req.body);
         if (error) return res.status(400).send(error.details[0].message);
 
+        const {type, price, img_link, status, comment, userId} = req.body;
+
+        const user = await User.findById(req.user._id);
+        if(!user) return res.send('This user with given ID was not found');
+
         const product = await Product.findByIdAndUpdate(req.params.id, {
-            name: name,
+            type: type,
             price: price,
             img_link: img_link,
-            status: status
+            status: status,
+            user: {
+                name: user.name,
+                email: user.email
+            }
         }, {
                 new: true
             });
