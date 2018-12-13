@@ -3,6 +3,10 @@ const Joi = require('joi');
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
     type: {
         type: String,
         required: true
@@ -11,7 +15,7 @@ const productSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    img_Link: String,
+    img_link: String,
     status: {
         type: String,
         required: true
@@ -26,9 +30,10 @@ const Product = mongoose.model('Products', productSchema);
 
 function validateProduct(product){
     const schema = {
+        name:Joi.string().required(),
         type: Joi.string().required(),
         price: Joi.number().required(),
-        img_Link: Joi.string(),
+        img_link: Joi.string(),
         status: Joi.string().required(),
         userId: Joi.string().required()
     } 
