@@ -32,9 +32,10 @@ passport.use('google', new GoogleStrategy({
             google: {
                 googleId: profile.id,
                 email: profile.emails[0].value,
-                name: profile.name.familyName + ' ' + profile.name.givenName
+                name: profile.displayName,
+                avatar: profile.photos[0].value
             }
-        })
+        });
         await user.save();
         done(null, user);
         return;

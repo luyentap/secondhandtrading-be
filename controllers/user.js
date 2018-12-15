@@ -37,7 +37,7 @@ var users = {
         const user = await User.findById(req.user._id);
         if(!user) return res.status(404).send('The user with given ID was not found.');
 
-        if(user.method == 'google') res.send({name: user.google.name});
+        if(user.method == 'google') res.send({name: user.google.name, avatar: user.google.avatar});
         if(user.method == 'facebook') res.send({name: user.facebook.name});
         if(user.method == 'local') res.send({name: user.local.name});
     },

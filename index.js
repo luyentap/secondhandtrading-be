@@ -12,7 +12,7 @@ if (!config.get('jwtPrivateKey')){
 }
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/bacon-rater-app')
+mongoose.connect('mongodb://localhost/secondhand-trading-app')
     .then(()=>{console.log('Connected to MongoDB...')})
     .catch(error=>{console.error('Could not connect to MongoDB.')})
 

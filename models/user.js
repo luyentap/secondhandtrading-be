@@ -29,7 +29,8 @@ const userSchema =  new  mongoose.Schema({
     google:{
         googleId: String,
         email: String,
-        name: String
+        name: String,
+        avatar: String
     },
     facebook:{
         facebookId: String,
@@ -55,7 +56,8 @@ function validateUser(user){
         name: Joi.string().min(5).required(),
         email: Joi.string().min(5).max(255).required().email(),
         password: Joi.string().min(8).max(1024).required(),
-        story: Joi.string()
+        story: Joi.string(),
+        avatar: Joi.string()
     } 
     return Joi.validate(user,schema);
 };
