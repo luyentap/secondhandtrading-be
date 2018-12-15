@@ -2,6 +2,7 @@ const config = require('config');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const { User, validateUser } = require('../models/user');
+const { Product } = require('../models/product');
 const _ = require('lodash');
 
 var users = {
@@ -45,6 +46,15 @@ var users = {
         if(!user) return res.status(404).send('This user with given ID was not found.');
     
         res.send(user);
+    },
+    getProducts: async (req, res) => {
+        const user = await User.findById(req.user._id);
+        if(!user) return res.status(404).send('This user with given ID was not found.');
+    
+        const products = await Product.find({'user._id': user._id});
+
+        console.log(products);
+        res.send(products);
     }
 };
 

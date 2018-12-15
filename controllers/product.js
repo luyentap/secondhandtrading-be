@@ -24,6 +24,7 @@ var products = {
             img_link: img_link,
             status: status,
             user: {
+                _id: user._id,
                 method: user.method,
                 name: user.name,
                 email: user.email
@@ -34,10 +35,11 @@ var products = {
         res.send(product);
     },
     update: async (req, res) => {
+        req.body.userId = req.user._id;
         const { error } = validateProduct(req.body);
         if (error) return res.status(400).send(error.details[0].message);
 
-        const {name, type, price, img_link, status, comment, userId} = req.body;
+        const {name, type, price, img_link, status} = req.body;
 
         const user = await User.findById(req.user._id);
         if(!user) return res.send('This user with given ID was not found');
@@ -49,6 +51,8 @@ var products = {
             img_link: img_link,
             status: status,
             user: {
+                _id: user._id,
+                method: user.method,
                 name: user.name,
                 email: user.email
             }
