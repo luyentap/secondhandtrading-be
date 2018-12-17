@@ -12,7 +12,7 @@ if (!config.get('jwtPrivateKey')){
 }
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/secondhand-trading-app')
+mongoose.connect('mongodb://admin:112233a@ds045507.mlab.com:45507/secondhand-trading-app')
     .then(()=>{console.log('Connected to MongoDB...')})
     .catch(error=>{console.error('Could not connect to MongoDB.')})
 
