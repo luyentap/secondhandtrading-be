@@ -26,7 +26,7 @@ var auth = {
         // res.send({user, token});
         // res.redirect('/login?token='+ token);
         res.writeHead(301, {
-            location: "http://secondhandtrading-be.herokuapp.com/" + "success_login?token=" + token
+            location: "http://secondhandtrading-fe.herokuapp.com/" + "success_login?token=" + token
         });
         res.end();
     },
